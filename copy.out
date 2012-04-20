@@ -1,0 +1,85 @@
+
+/* SQL script created by COPYDB, version VW 2.0.2 (a64.lnx/121)NPTL. */
+
+\sql
+set autocommit on
+\p\g
+set lockmode session where readlock=nolock
+\p\g
+\sql
+set session with privileges=all
+\p\g
+copy account () into '/home/bugg/Apps/data-integration/tmp/backup/account.bugg'
+\p\g
+copy agg_c_10_sales_fact_1997 () into '/home/bugg/Apps/data-integration/tmp/backup/agg_c_10_sales_fact_1997.bugg'
+\p\g
+copy agg_c_14_sales_fact_1997 () into '/home/bugg/Apps/data-integration/tmp/backup/agg_c_14_sales_fact_1997.bugg'
+\p\g
+copy agg_c_special_sales_fact_1997 () into '/home/bugg/Apps/data-integration/tmp/backup/agg_c_special_sales_fact_1997.bugg'
+\p\g
+copy agg_g_ms_pcat_sales_fact_1997 () into '/home/bugg/Apps/data-integration/tmp/backup/agg_g_ms_pcat_sales_fact_1997.bugg'
+\p\g
+copy agg_l_03_sales_fact_1997 () into '/home/bugg/Apps/data-integration/tmp/backup/agg_l_03_sales_fact_1997.bugg'
+\p\g
+copy agg_l_04_sales_fact_1997 () into '/home/bugg/Apps/data-integration/tmp/backup/agg_l_04_sales_fact_1997.bugg'
+\p\g
+copy agg_l_05_sales_fact_1997 () into '/home/bugg/Apps/data-integration/tmp/backup/agg_l_05_sales_fact_1997.bugg'
+\p\g
+copy agg_lc_06_sales_fact_1997 () into '/home/bugg/Apps/data-integration/tmp/backup/agg_lc_06_sales_fact_1997.bugg'
+\p\g
+copy agg_lc_100_sales_fact_1997 () into '/home/bugg/Apps/data-integration/tmp/backup/agg_lc_100_sales_fact_1997.bugg'
+\p\g
+copy agg_ll_01_sales_fact_1997 () into '/home/bugg/Apps/data-integration/tmp/backup/agg_ll_01_sales_fact_1997.bugg'
+\p\g
+copy agg_pl_01_sales_fact_1997 () into '/home/bugg/Apps/data-integration/tmp/backup/agg_pl_01_sales_fact_1997.bugg'
+\p\g
+copy category () into '/home/bugg/Apps/data-integration/tmp/backup/category.bugg'
+\p\g
+copy currency () into '/home/bugg/Apps/data-integration/tmp/backup/currency.bugg'
+\p\g
+copy customer () into '/home/bugg/Apps/data-integration/tmp/backup/customer.bugg'
+\p\g
+copy days () into '/home/bugg/Apps/data-integration/tmp/backup/days.bugg'
+\p\g
+copy department () into '/home/bugg/Apps/data-integration/tmp/backup/department.bugg'
+\p\g
+copy employee () into '/home/bugg/Apps/data-integration/tmp/backup/employee.bugg'
+\p\g
+copy employee_closure () into '/home/bugg/Apps/data-integration/tmp/backup/employee_closure.bugg'
+\p\g
+copy expense_fact () into '/home/bugg/Apps/data-integration/tmp/backup/expense_fact.bugg'
+\p\g
+copy inventory_fact_1997 () into '/home/bugg/Apps/data-integration/tmp/backup/inventory_fact_1997.bugg'
+\p\g
+copy inventory_fact_1998 () into '/home/bugg/Apps/data-integration/tmp/backup/inventory_fact_1998.bugg'
+\p\g
+copy position () into '/home/bugg/Apps/data-integration/tmp/backup/position.bugg'
+\p\g
+copy product () into '/home/bugg/Apps/data-integration/tmp/backup/product.bugg'
+\p\g
+copy product_class () into '/home/bugg/Apps/data-integration/tmp/backup/product_class.bugg'
+\p\g
+copy promotion () into '/home/bugg/Apps/data-integration/tmp/backup/promotion.bugg'
+\p\g
+copy region () into '/home/bugg/Apps/data-integration/tmp/backup/region.bugg'
+\p\g
+copy reserve_employee () into '/home/bugg/Apps/data-integration/tmp/backup/reserve_employee.bugg'
+\p\g
+copy salary () into '/home/bugg/Apps/data-integration/tmp/backup/salary.bugg'
+\p\g
+copy sales_fact_1997 () into '/home/bugg/Apps/data-integration/tmp/backup/sales_fact_1997.bugg'
+\p\g
+copy sales_fact_1998 () into '/home/bugg/Apps/data-integration/tmp/backup/sales_fact_1998.bugg'
+\p\g
+copy sales_fact_dec_1998 () into '/home/bugg/Apps/data-integration/tmp/backup/sales_fact_dec_1998.bugg'
+\p\g
+copy store () into '/home/bugg/Apps/data-integration/tmp/backup/store.bugg'
+\p\g
+copy store_ragged () into '/home/bugg/Apps/data-integration/tmp/backup/store_ragged.bugg'
+\p\g
+copy time_by_day () into '/home/bugg/Apps/data-integration/tmp/backup/time_by_day.bugg'
+\p\g
+copy warehouse () into '/home/bugg/Apps/data-integration/tmp/backup/warehouse.bugg'
+\p\g
+copy warehouse_class () into '/home/bugg/Apps/data-integration/tmp/backup/warehouse_class.bugg'
+\p\g

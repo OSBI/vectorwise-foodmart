@@ -1,0 +1,627 @@
+
+/* SQL script created by COPYDB, version VW 2.0.2 (a64.lnx/121)NPTL. */
+
+\sql
+set autocommit on
+\p\g
+set nojournaling
+\p\g
+\sql
+set session with privileges=all
+\p\g
+set nocreate_compression
+\p\g
+
+	/* TABLES */
+\nocontinue
+create table account(
+	account_id integer,
+	account_parent integer,
+	account_description varchar(30) collate ucs_basic,
+	account_type varchar(30) collate ucs_basic,
+	account_rollup varchar(30) collate ucs_basic,
+	custom_members varchar(255) collate ucs_basic
+)
+with structure=vectorwise
+\p\g
+create table agg_c_10_sales_fact_1997(
+	month_of_year smallint,
+	quarter varchar(30) collate ucs_basic,
+	the_year smallint,
+	store_sales float,
+	store_cost float,
+	unit_sales float,
+	customer_count integer,
+	fact_count integer
+)
+with structure=vectorwise
+\p\g
+create table agg_c_14_sales_fact_1997(
+	product_id integer,
+	customer_id integer,
+	store_id integer,
+	promotion_id integer,
+	month_of_year smallint,
+	quarter varchar(30) collate ucs_basic,
+	the_year smallint,
+	store_sales float,
+	store_cost float,
+	unit_sales float,
+	fact_count integer
+)
+with structure=vectorwise
+\p\g
+create table agg_c_special_sales_fact_1997(
+	product_id integer,
+	promotion_id integer,
+	customer_id integer,
+	store_id integer,
+	time_month smallint,
+	time_quarter varchar(30) collate ucs_basic,
+	time_year smallint,
+	store_sales_sum float,
+	store_cost_sum float,
+	unit_sales_sum float,
+	fact_count integer
+)
+with structure=vectorwise
+\p\g
+create table agg_g_ms_pcat_sales_fact_1997(
+	gender varchar(30) collate ucs_basic,
+	marital_status varchar(30) collate ucs_basic,
+	product_family varchar(30) collate ucs_basic,
+	product_department varchar(30) collate ucs_basic,
+	product_category varchar(30) collate ucs_basic,
+	month_of_year smallint,
+	quarter varchar(30) collate ucs_basic,
+	the_year smallint,
+	store_sales float,
+	store_cost float,
+	unit_sales float,
+	customer_count integer,
+	fact_count integer
+)
+with structure=vectorwise
+\p\g
+create table agg_l_03_sales_fact_1997(
+	time_id integer,
+	customer_id integer,
+	store_sales float,
+	store_cost float,
+	unit_sales float,
+	fact_count integer
+)
+with structure=vectorwise
+\p\g
+create table agg_l_04_sales_fact_1997(
+	time_id integer,
+	store_sales float,
+	store_cost float,
+	unit_sales float,
+	customer_count integer,
+	fact_count integer
+)
+with structure=vectorwise
+\p\g
+create table agg_l_05_sales_fact_1997(
+	product_id integer,
+	customer_id integer,
+	promotion_id integer,
+	store_id integer,
+	store_sales float,
+	store_cost float,
+	unit_sales float,
+	fact_count integer
+)
+with structure=vectorwise
+\p\g
+create table agg_lc_06_sales_fact_1997(
+	time_id integer,
+	city varchar(30) collate ucs_basic,
+	state_province varchar(30) collate ucs_basic,
+	country varchar(30) collate ucs_basic,
+	store_sales float,
+	store_cost float,
+	unit_sales float,
+	fact_count integer
+)
+with structure=vectorwise
+\p\g
+create table agg_lc_100_sales_fact_1997(
+	product_id integer,
+	customer_id integer,
+	quarter varchar(30) collate ucs_basic,
+	the_year smallint,
+	store_sales float,
+	store_cost float,
+	unit_sales float,
+	fact_count integer
+)
+with structure=vectorwise
+\p\g
+create table agg_ll_01_sales_fact_1997(
+	product_id integer,
+	time_id integer,
+	customer_id integer,
+	store_sales float,
+	store_cost float,
+	unit_sales float,
+	fact_count integer
+)
+with structure=vectorwise
+\p\g
+create table agg_pl_01_sales_fact_1997(
+	product_id integer,
+	time_id integer,
+	customer_id integer,
+	store_sales_sum float,
+	store_cost_sum float,
+	unit_sales_sum float,
+	fact_count integer
+)
+with structure=vectorwise
+\p\g
+create table category(
+	category_id varchar(30) collate ucs_basic,
+	category_parent varchar(30) collate ucs_basic,
+	category_description varchar(30) collate ucs_basic,
+	category_rollup varchar(30) collate ucs_basic
+)
+with structure=vectorwise
+\p\g
+create table currency(
+	currency_id integer,
+	date timestamp(6) without time zone,
+	currency varchar(30) collate ucs_basic,
+	conversion_ratio float
+)
+with structure=vectorwise
+\p\g
+create table customer(
+	customer_id integer,
+	account_num i8,
+	lname varchar(30) collate ucs_basic,
+	fname varchar(30) collate ucs_basic,
+	mi varchar(30) collate ucs_basic,
+	address1 varchar(30) collate ucs_basic,
+	address2 varchar(30) collate ucs_basic,
+	address3 varchar(30) collate ucs_basic,
+	address4 varchar(30) collate ucs_basic,
+	city varchar(30) collate ucs_basic,
+	state_province varchar(30) collate ucs_basic,
+	postal_code varchar(30) collate ucs_basic,
+	country varchar(30) collate ucs_basic,
+	customer_region_id integer,
+	phone1 varchar(30) collate ucs_basic,
+	phone2 varchar(30) collate ucs_basic,
+	birthdate timestamp(6) without time zone,
+	marital_status varchar(30) collate ucs_basic,
+	yearly_income varchar(30) collate ucs_basic,
+	gender varchar(30) collate ucs_basic,
+	total_children smallint,
+	num_children_at_home smallint,
+	education varchar(30) collate ucs_basic,
+	date_accnt_opened timestamp(6) without time zone,
+	member_card varchar(30) collate ucs_basic,
+	occupation varchar(30) collate ucs_basic,
+	houseowner varchar(30) collate ucs_basic,
+	num_cars_owned integer,
+	fullname varchar(60) collate ucs_basic
+)
+with structure=vectorwise
+\p\g
+create table days(
+	day integer,
+	week_day varchar(30) collate ucs_basic
+)
+with structure=vectorwise
+\p\g
+create table department(
+	department_id integer,
+	department_description varchar(30) collate ucs_basic
+)
+with structure=vectorwise
+\p\g
+create table employee(
+	employee_id integer,
+	full_name varchar(30) collate ucs_basic,
+	first_name varchar(30) collate ucs_basic,
+	last_name varchar(30) collate ucs_basic,
+	position_id integer,
+	position_title varchar(30) collate ucs_basic,
+	store_id integer,
+	department_id integer,
+	birth_date timestamp(6) without time zone,
+	hire_date timestamp(6) without time zone,
+	end_date timestamp(6) without time zone,
+	salary float,
+	supervisor_id integer,
+	education_level varchar(30) collate ucs_basic,
+	marital_status varchar(30) collate ucs_basic,
+	gender varchar(30) collate ucs_basic,
+	management_role varchar(30) collate ucs_basic
+)
+with structure=vectorwise
+\p\g
+create table employee_closure(
+	employee_id integer,
+	supervisor_id integer,
+	distance integer
+)
+with structure=vectorwise
+\p\g
+create table expense_fact(
+	store_id integer,
+	account_id integer,
+	exp_date timestamp(6) without time zone,
+	time_id integer,
+	category_id varchar(30) collate ucs_basic,
+	currency_id integer,
+	amount float
+)
+with structure=vectorwise
+\p\g
+create table inventory_fact_1997(
+	product_id integer,
+	time_id integer,
+	warehouse_id integer,
+	store_id integer,
+	units_ordered integer,
+	units_shipped integer,
+	warehouse_sales float,
+	warehouse_cost float,
+	supply_time smallint,
+	store_invoice float
+)
+with structure=vectorwise
+\p\g
+create table inventory_fact_1998(
+	product_id integer,
+	time_id integer,
+	warehouse_id integer,
+	store_id integer,
+	units_ordered integer,
+	units_shipped integer,
+	warehouse_sales float,
+	warehouse_cost float,
+	supply_time smallint,
+	store_invoice float
+)
+with structure=vectorwise
+\p\g
+create table position(
+	position_id integer,
+	position_title varchar(30) collate ucs_basic,
+	pay_type varchar(30) collate ucs_basic,
+	min_scale float,
+	max_scale float,
+	management_role varchar(30) collate ucs_basic
+)
+with structure=vectorwise
+\p\g
+create table product(
+	product_class_id integer,
+	product_id integer,
+	brand_name varchar(60) collate ucs_basic,
+	product_name varchar(60) collate ucs_basic,
+	sku i8,
+	srp float,
+	gross_weight float,
+	net_weight float,
+	recyclable_package char(1) collate ucs_basic,
+	low_fat char(1) collate ucs_basic,
+	units_per_case smallint,
+	cases_per_pallet smallint,
+	shelf_width float,
+	shelf_height float,
+	shelf_depth float
+)
+with structure=vectorwise
+\p\g
+create table product_class(
+	product_class_id integer,
+	product_subcategory varchar(30) collate ucs_basic,
+	product_category varchar(30) collate ucs_basic,
+	product_department varchar(30) collate ucs_basic,
+	product_family varchar(30) collate ucs_basic
+)
+with structure=vectorwise
+\p\g
+create table promotion(
+	promotion_id integer,
+	promotion_district_id integer,
+	promotion_name varchar(30) collate ucs_basic,
+	media_type varchar(30) collate ucs_basic,
+	cost float,
+	start_date timestamp(6) without time zone,
+	end_date timestamp(6) without time zone
+)
+with structure=vectorwise
+\p\g
+create table region(
+	region_id integer,
+	sales_city varchar(30) collate ucs_basic,
+	sales_state_province varchar(30) collate ucs_basic,
+	sales_district varchar(30) collate ucs_basic,
+	sales_region varchar(30) collate ucs_basic,
+	sales_country varchar(30) collate ucs_basic,
+	sales_district_id integer
+)
+with structure=vectorwise
+\p\g
+create table reserve_employee(
+	employee_id integer,
+	full_name varchar(30) collate ucs_basic,
+	first_name varchar(30) collate ucs_basic,
+	last_name varchar(30) collate ucs_basic,
+	position_id integer,
+	position_title varchar(30) collate ucs_basic,
+	store_id integer,
+	department_id integer,
+	birth_date timestamp(6) without time zone,
+	hire_date timestamp(6) without time zone,
+	end_date timestamp(6) without time zone,
+	salary float,
+	supervisor_id integer,
+	education_level varchar(30) collate ucs_basic,
+	marital_status varchar(30) collate ucs_basic,
+	gender varchar(30) collate ucs_basic
+)
+with structure=vectorwise
+\p\g
+create table salary(
+	pay_date timestamp(6) without time zone,
+	employee_id integer,
+	department_id integer,
+	currency_id integer,
+	salary_paid float,
+	overtime_paid float,
+	vacation_accrued float,
+	vacation_used float
+)
+with structure=vectorwise
+\p\g
+create table sales_fact_1997(
+	product_id integer,
+	time_id integer,
+	customer_id integer,
+	promotion_id integer,
+	store_id integer,
+	store_sales float,
+	store_cost float,
+	unit_sales float
+)
+with structure=vectorwise
+\p\g
+create table sales_fact_1998(
+	product_id integer,
+	time_id integer,
+	customer_id integer,
+	promotion_id integer,
+	store_id integer,
+	store_sales float,
+	store_cost float,
+	unit_sales float
+)
+with structure=vectorwise
+\p\g
+create table sales_fact_dec_1998(
+	product_id integer,
+	time_id integer,
+	customer_id integer,
+	promotion_id integer,
+	store_id integer,
+	store_sales float,
+	store_cost float,
+	unit_sales float
+)
+with structure=vectorwise
+\p\g
+create table store(
+	store_id integer,
+	store_type varchar(30) collate ucs_basic,
+	region_id integer,
+	store_name varchar(30) collate ucs_basic,
+	store_number integer,
+	store_street_address varchar(30) collate ucs_basic,
+	store_city varchar(30) collate ucs_basic,
+	store_state varchar(30) collate ucs_basic,
+	store_postal_code varchar(30) collate ucs_basic,
+	store_country varchar(30) collate ucs_basic,
+	store_manager varchar(30) collate ucs_basic,
+	store_phone varchar(30) collate ucs_basic,
+	store_fax varchar(30) collate ucs_basic,
+	first_opened_date timestamp(6) without time zone,
+	last_remodel_date timestamp(6) without time zone,
+	store_sqft integer,
+	grocery_sqft integer,
+	frozen_sqft integer,
+	meat_sqft integer,
+	coffee_bar char(1) collate ucs_basic,
+	video_store char(1) collate ucs_basic,
+	salad_bar char(1) collate ucs_basic,
+	prepared_food char(1) collate ucs_basic,
+	florist char(1) collate ucs_basic
+)
+with structure=vectorwise
+\p\g
+create table store_ragged(
+	store_id integer,
+	store_type varchar(30) collate ucs_basic,
+	region_id integer,
+	store_name varchar(30) collate ucs_basic,
+	store_number integer,
+	store_street_address varchar(30) collate ucs_basic,
+	store_city varchar(30) collate ucs_basic,
+	store_state varchar(30) collate ucs_basic,
+	store_postal_code varchar(30) collate ucs_basic,
+	store_country varchar(30) collate ucs_basic,
+	store_manager varchar(30) collate ucs_basic,
+	store_phone varchar(30) collate ucs_basic,
+	store_fax varchar(30) collate ucs_basic,
+	first_opened_date timestamp(6) without time zone,
+	last_remodel_date timestamp(6) without time zone,
+	store_sqft integer,
+	grocery_sqft integer,
+	frozen_sqft integer,
+	meat_sqft integer,
+	coffee_bar char(1) collate ucs_basic,
+	video_store char(1) collate ucs_basic,
+	salad_bar char(1) collate ucs_basic,
+	prepared_food char(1) collate ucs_basic,
+	florist char(1) collate ucs_basic
+)
+with structure=vectorwise
+\p\g
+create table time_by_day(
+	time_id integer,
+	the_date timestamp(6) without time zone,
+	the_day varchar(30) collate ucs_basic,
+	the_month varchar(30) collate ucs_basic,
+	the_year smallint,
+	day_of_month smallint,
+	week_of_year integer,
+	month_of_year smallint,
+	quarter varchar(30) collate ucs_basic,
+	fiscal_period varchar(30) collate ucs_basic
+)
+with structure=vectorwise
+\p\g
+create table warehouse(
+	warehouse_id integer,
+	warehouse_class_id integer,
+	stores_id integer,
+	warehouse_name varchar(60) collate ucs_basic,
+	wa_address1 varchar(30) collate ucs_basic,
+	wa_address2 varchar(30) collate ucs_basic,
+	wa_address3 varchar(30) collate ucs_basic,
+	wa_address4 varchar(30) collate ucs_basic,
+	warehouse_city varchar(30) collate ucs_basic,
+	warehouse_state_province varchar(30) collate ucs_basic,
+	warehouse_postal_code varchar(30) collate ucs_basic,
+	warehouse_country varchar(30) collate ucs_basic,
+	warehouse_owner_name varchar(30) collate ucs_basic,
+	warehouse_phone varchar(30) collate ucs_basic,
+	warehouse_fax varchar(30) collate ucs_basic
+)
+with structure=vectorwise
+\p\g
+create table warehouse_class(
+	warehouse_class_id integer,
+	description varchar(30) collate ucs_basic
+)
+with structure=vectorwise
+\p\g
+
+	/* VW_TABLE COPIES */
+copy account () from '/home/bugg/Apps/data-integration/tmp/backup/account.bugg'
+with row_estimate = 11
+\p\g
+copy agg_c_10_sales_fact_1997 () from '/home/bugg/Apps/data-integration/tmp/backup/agg_c_10_sales_fact_1997.bugg'
+with row_estimate = 12
+\p\g
+copy agg_c_14_sales_fact_1997 () from '/home/bugg/Apps/data-integration/tmp/backup/agg_c_14_sales_fact_1997.bugg'
+with row_estimate = 86805
+\p\g
+copy agg_c_special_sales_fact_1997 () from '/home/bugg/Apps/data-integration/tmp/backup/agg_c_special_sales_fact_1997.bugg'
+with row_estimate = 86805
+\p\g
+copy agg_g_ms_pcat_sales_fact_1997 () from '/home/bugg/Apps/data-integration/tmp/backup/agg_g_ms_pcat_sales_fact_1997.bugg'
+with row_estimate = 2637
+\p\g
+copy agg_l_03_sales_fact_1997 () from '/home/bugg/Apps/data-integration/tmp/backup/agg_l_03_sales_fact_1997.bugg'
+with row_estimate = 20522
+\p\g
+copy agg_l_04_sales_fact_1997 () from '/home/bugg/Apps/data-integration/tmp/backup/agg_l_04_sales_fact_1997.bugg'
+with row_estimate = 323
+\p\g
+copy agg_l_05_sales_fact_1997 () from '/home/bugg/Apps/data-integration/tmp/backup/agg_l_05_sales_fact_1997.bugg'
+with row_estimate = 86154
+\p\g
+copy agg_lc_06_sales_fact_1997 () from '/home/bugg/Apps/data-integration/tmp/backup/agg_lc_06_sales_fact_1997.bugg'
+with row_estimate = 4464
+\p\g
+copy agg_lc_100_sales_fact_1997 () from '/home/bugg/Apps/data-integration/tmp/backup/agg_lc_100_sales_fact_1997.bugg'
+with row_estimate = 86602
+\p\g
+copy agg_ll_01_sales_fact_1997 () from '/home/bugg/Apps/data-integration/tmp/backup/agg_ll_01_sales_fact_1997.bugg'
+with row_estimate = 86829
+\p\g
+copy agg_pl_01_sales_fact_1997 () from '/home/bugg/Apps/data-integration/tmp/backup/agg_pl_01_sales_fact_1997.bugg'
+with row_estimate = 86829
+\p\g
+copy category () from '/home/bugg/Apps/data-integration/tmp/backup/category.bugg'
+with row_estimate = 4
+\p\g
+copy currency () from '/home/bugg/Apps/data-integration/tmp/backup/currency.bugg'
+with row_estimate = 72
+\p\g
+copy customer () from '/home/bugg/Apps/data-integration/tmp/backup/customer.bugg'
+with row_estimate = 10281
+\p\g
+copy days () from '/home/bugg/Apps/data-integration/tmp/backup/days.bugg'
+with row_estimate = 7
+\p\g
+copy department () from '/home/bugg/Apps/data-integration/tmp/backup/department.bugg'
+with row_estimate = 12
+\p\g
+copy employee () from '/home/bugg/Apps/data-integration/tmp/backup/employee.bugg'
+with row_estimate = 1155
+\p\g
+copy employee_closure () from '/home/bugg/Apps/data-integration/tmp/backup/employee_closure.bugg'
+with row_estimate = 7179
+\p\g
+copy expense_fact () from '/home/bugg/Apps/data-integration/tmp/backup/expense_fact.bugg'
+with row_estimate = 2400
+\p\g
+copy inventory_fact_1997 () from '/home/bugg/Apps/data-integration/tmp/backup/inventory_fact_1997.bugg'
+with row_estimate = 4070
+\p\g
+copy inventory_fact_1998 () from '/home/bugg/Apps/data-integration/tmp/backup/inventory_fact_1998.bugg'
+with row_estimate = 7282
+\p\g
+copy position () from '/home/bugg/Apps/data-integration/tmp/backup/position.bugg'
+with row_estimate = 18
+\p\g
+copy product () from '/home/bugg/Apps/data-integration/tmp/backup/product.bugg'
+with row_estimate = 1560
+\p\g
+copy product_class () from '/home/bugg/Apps/data-integration/tmp/backup/product_class.bugg'
+with row_estimate = 110
+\p\g
+copy promotion () from '/home/bugg/Apps/data-integration/tmp/backup/promotion.bugg'
+with row_estimate = 1864
+\p\g
+copy region () from '/home/bugg/Apps/data-integration/tmp/backup/region.bugg'
+with row_estimate = 110
+\p\g
+copy reserve_employee () from '/home/bugg/Apps/data-integration/tmp/backup/reserve_employee.bugg'
+with row_estimate = 143
+\p\g
+copy salary () from '/home/bugg/Apps/data-integration/tmp/backup/salary.bugg'
+with row_estimate = 21252
+\p\g
+copy sales_fact_1997 () from '/home/bugg/Apps/data-integration/tmp/backup/sales_fact_1997.bugg'
+with row_estimate = 86837
+\p\g
+copy sales_fact_1998 () from '/home/bugg/Apps/data-integration/tmp/backup/sales_fact_1998.bugg'
+with row_estimate = 164558
+\p\g
+copy sales_fact_dec_1998 () from '/home/bugg/Apps/data-integration/tmp/backup/sales_fact_dec_1998.bugg'
+with row_estimate = 18325
+\p\g
+copy store () from '/home/bugg/Apps/data-integration/tmp/backup/store.bugg'
+with row_estimate = 25
+\p\g
+copy store_ragged () from '/home/bugg/Apps/data-integration/tmp/backup/store_ragged.bugg'
+with row_estimate = 25
+\p\g
+copy time_by_day () from '/home/bugg/Apps/data-integration/tmp/backup/time_by_day.bugg'
+with row_estimate = 730
+\p\g
+copy warehouse () from '/home/bugg/Apps/data-integration/tmp/backup/warehouse.bugg'
+with row_estimate = 24
+\p\g
+copy warehouse_class () from '/home/bugg/Apps/data-integration/tmp/backup/warehouse_class.bugg'
+with row_estimate = 6
+\p\g
